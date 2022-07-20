@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false,
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test",
+    "**/*.test.*",
+    "**/*.spec.*",
+  ]
+}
