@@ -7,9 +7,8 @@ import { getTruthyIndices, mapString, sample } from "./utils";
  * corresponding bitmap.
  *
  * ('hello', [0,1,0,1,0], '*') => '*e*l*o'
- *
  */
-export class Obfuscator {
+abstract class Obfuscator {
   public value: string;
   public bitmap!: number[];
 
@@ -31,7 +30,7 @@ export class Obfuscator {
    * either one of the provided characters randomly or to itself, depending on
    * whether the corresponding bitmap index is truthy.
    */
-  render(characters: string = "", exclude: string[] = []) {
+  render(characters = "", exclude: string[] = []) {
     // If no characters are provided, return the raw value.
     if (!characters.length) return this.value;
 
@@ -52,8 +51,8 @@ export class Obfuscator {
    */
   decay(count = 1) {
     while (count--) {
-      let on = getTruthyIndices(this.bitmap);
-      this.bitmap[sample(on)] = 0;
+      const on = sample(getTruthyIndices(this.bitmap));
+      this.bitmap[on] = 0;
     }
     return this;
   }
@@ -75,7 +74,6 @@ export class Obfuscator {
  * textContent.
  *
  * (<p>Hi Mom!</p>).write('*~•+') => <p>•~ *+~•</p>
- *
  */
 export class ObfuscatorElement extends Obfuscator {
   private element: Node;
@@ -85,7 +83,7 @@ export class ObfuscatorElement extends Obfuscator {
     this.element = element;
   }
 
-  write(chars: string = "", exclude: string[] = []) {
+  write(chars = "", exclude: string[] = []) {
     this.element.textContent = this.render(chars, exclude);
     return this;
   }

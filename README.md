@@ -142,5 +142,5 @@ An instance of baffle has six methods, all of which are chainable.
 
 - **License** MIT
 - **TypeScript conversion by** [Cabe Branson](http://cabe.dev)
-- **Originally Made by** [Cam Wiegert](http://camwiegert.com)
+- **Originally made by** [Cam Wiegert](http://camwiegert.com)
 - **Inspired by** [Oak](http://oak.is/)

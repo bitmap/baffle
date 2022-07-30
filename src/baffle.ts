@@ -105,7 +105,7 @@ export class Baffle {
    */
   reveal(duration = 0, delay = 0) {
     // Number of cycles in duration
-    let cycles = duration / this.options.speed || 1;
+    const cycles = duration / this.options.speed || 1;
 
     const run = () => {
       clearInterval(this.interval);
@@ -115,11 +115,11 @@ export class Baffle {
       // pace to finish within duration milliseconds.
       this.interval = setInterval(() => {
         // Get elements that haven't been fully revealed
-        let unrevealedElements = this.elements.filter((el) => !el.bitmap.every((bit) => !bit));
+        const unrevealedElements = this.elements.filter((el) => !el.bitmap.every((bit) => !bit));
 
         // Decay each by pace and write
         for (const element of unrevealedElements) {
-          let pace = Math.ceil(element.value.length / cycles);
+          const pace = Math.ceil(element.value.length / cycles);
           element.decay(pace).write(this.options.characters, this.options.exclude);
         }
 
